@@ -1,0 +1,24 @@
+# this .yml file runs MySQL and MongoDB as a Docker container (during development)
+version: '3'
+services:
+  ### mysql database for posts
+  db-orders:
+    container_name: db-posts
+    image: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: posts
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+
+  ### mongo database for comments
+  db-comments:
+    container_name: db-comments
+    image: mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
