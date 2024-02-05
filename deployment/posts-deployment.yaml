@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: content-craft-posts-deployment
+spec:
+  selector:
+    matchLabels:
+      app: content-craft-posts-mysql
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: content-craft-posts-mysql
+    spec:
+      containers:
+        - name: content-craft-posts
+          image: content-craft-posts:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSQL_DB_HOST
+              value: mysql
+            - name: MYSQL_DB_NAME
+              value: posts
+            - name: MYSQL_DB_USERNAME
+              value: root
+            - name: MYSQL_DB_PASSWORD
+              value: root
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-craft-posts-svc
+spec:
+  selector:
+    app: content-craft-posts-mysql
+  ports:
+    - protocol: "TCP"
+      port: 8080
+      targetPort: 8080
+  type: NodePort

@@ -2,7 +2,7 @@
 version: '3'
 services:
   ### mysql database for posts
-  db-orders:
+  db-posts:
     container_name: db-posts
     image: mysql
     restart: unless-stopped
