@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: content-craft-comments-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: content-craft-comments
+  template:
+    metadata:
+      labels:
+        app: content-craft-comments
+    spec:
+      containers:
+        - name: content-craft-comments
+          image: content-craft-comments:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_DB_HOST
+              value: mongodb
+            - name: MONGO_DB_NAME
+              value: comments
+            - name: MONGO_DB_USERNAME
+              value: root
+            - name: MONGO_DB_PASSWORD
+              value: root
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-craft-comments-svc
+spec:
+  selector:
+    app: content-craft-comments
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090
+  type: NodePort
