@@ -19,13 +19,25 @@ spec:
             - containerPort: 8080
           env:
             - name: MYSQL_DB_HOST
-              value: mysql
+              valueFrom:
+                configMapKeyRef:
+                  name: posts-config-map
+                  key: host
             - name: MYSQL_DB_NAME
-              value: posts
+              valueFrom:
+                configMapKeyRef:
+                  name: posts-config-map
+                  key: dbName
             - name: MYSQL_DB_USERNAME
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  name: posts-secrets
+                  key: username
             - name: MYSQL_DB_PASSWORD
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  name: posts-secrets
+                  key: password
 ---
 apiVersion: v1
 kind: Service
