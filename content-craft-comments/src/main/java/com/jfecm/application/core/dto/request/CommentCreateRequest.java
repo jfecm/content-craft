@@ -1,4 +1,4 @@
-package com.jfecm.domain.dto.requests;
+package com.jfecm.application.core.dto.request;
 
 public record CommentCreateRequest(
         String author,
