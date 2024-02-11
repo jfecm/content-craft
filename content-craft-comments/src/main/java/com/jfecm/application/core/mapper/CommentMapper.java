@@ -1,9 +1,9 @@
-package com.jfecm.application.mapper;
+package com.jfecm.application.core.mapper;
 
-import com.jfecm.domain.dto.requests.CommentCreateRequest;
-import com.jfecm.domain.dto.response.CommentCreateResponse;
-import com.jfecm.domain.dto.response.CommentListResponse;
-import com.jfecm.infrastructure.adapter.out.persistence.entity.CommentEntity;
+import com.jfecm.adapters.outbound.repository.CommentEntity;
+import com.jfecm.application.core.dto.request.CommentCreateRequest;
+import com.jfecm.application.core.dto.response.CommentCreateResponse;
+import com.jfecm.application.core.dto.response.CommentListResponse;
 
 import java.time.LocalDateTime;
 

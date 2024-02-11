@@ -1,10 +1,11 @@
-package com.jfecm.domain.dto.response;
+package com.jfecm.application.core.dto.response;
 
 import java.time.LocalDateTime;
 
-public record CommentCreateResponse (
+public record CommentListResponse(
+        String id,
         String author,
         String text,
         LocalDateTime date
-){
+) {
 }

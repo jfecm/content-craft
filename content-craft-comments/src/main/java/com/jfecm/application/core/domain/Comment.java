@@ -1,4 +1,4 @@
-package com.jfecm.domain.model;
+package com.jfecm.application.core.domain;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package com.jfecm.infrastructure.adapter.out.persistence.entity;
+package com.jfecm.adapters.outbound.repository;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
