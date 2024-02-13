@@ -1,4 +1,4 @@
-# this .yml file runs MySQL and MongoDB as a Docker container (during development)
+# This .yml file configures Docker containers for various services (local development).
 version: '3'
 services:
   ### mysql database for posts
@@ -22,3 +22,18 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
     ports:
       - "27017:27017"
+  ### Zookeeper service for Kafka
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+  ### Kafka service
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
