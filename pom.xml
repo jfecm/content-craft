@@ -20,6 +20,7 @@
 	<modules>
 		<module>content-craft-posts</module>
 		<module>content-craft-comments</module>
+		<module>content-craft-notifications</module>
 	</modules>
 
 	<properties>
