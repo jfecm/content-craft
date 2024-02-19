@@ -22,6 +22,7 @@ public class Extra implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
+        postRepository.deleteAll();
         for (int i = 1; i < 50; i++) {
             Post post = new Post();
             post.setAuthor(AUTHOR_PREFIX + i);
