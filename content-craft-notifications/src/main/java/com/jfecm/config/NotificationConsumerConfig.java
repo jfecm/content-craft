@@ -21,7 +21,7 @@ public class NotificationConsumerConfig {
     public static final String VALUE_PACKAGES = "com.jfecm.model";
 
     @Bean
-    public Map<String, Object> config() {
+    public Map<String, Object> createConsumerConfig() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, SERVERS_CONFIG);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -31,14 +31,14 @@ public class NotificationConsumerConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, Object> consumerFactory() {
-        return new DefaultKafkaConsumerFactory<>(config());
+    public ConsumerFactory<String, Object> createConsumerFactory() {
+        return new DefaultKafkaConsumerFactory<>(createConsumerConfig());
     }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, Object>> listenerContainerFactory() {
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, Object>> createPostKafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
+        factory.setConsumerFactory(createConsumerFactory());
         return factory;
     }
 }
