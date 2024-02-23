@@ -1,11 +1,17 @@
 package com.jfecm.model;
 
+import lombok.*;
+
 import java.time.LocalDateTime;
 
-public record Post (
-        Long id,
-        String author,
-        String title,
-        LocalDateTime datePost
-) {
+@ToString
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Post {
+    private Long id;
+    private String author;
+    private String title;
+    private LocalDateTime datePost;
 }
